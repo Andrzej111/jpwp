@@ -1,0 +1,14 @@
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\ApplicationIcon.png
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\Background.png
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\com.example.hello.dll
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\com.example.hello.pdb
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\AppManifest.xaml
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\Properties\WMAppManifest.xml
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\Bin\Debug\CordovaAppProj_Debug_AnyCPU.xap
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\App.g.cs
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\cordovalib\CordovaView.g.cs
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\MainPage.g.cs
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\com.example.hello.g.resources
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\com.example.hello.dll
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\com.example.hello.pdb
+C:\Users\Paweł\Documents\GitHub\jpwp\jpwp\platforms\wp8\obj\Debug\XapCacheFile.xml

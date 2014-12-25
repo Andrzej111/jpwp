@@ -1,0 +1,50 @@
+body {
+}
+
+div[data-role=page] {
+        font-family: fantasy !important; 
+}
+div[data-role=header] a{ 
+    font-family: fantasy !important; 
+	font-size:80% !important;
+	/*color:#5566FF !important;
+    /*background: #112233 !important;*/
+	}
+
+div[data-role=navbar] a {
+    font-family: fantasy !important; 
+    font-size:120%;
+}
+
+/*h1,h2,h3,h4,h5 {
+	padding-top:10px !important;
+    padding-bottom:10px !important;
+	margin:0px !important;
+}*/
+	
+div[data-role=footer] {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:40px;  /* Wysokość stopki */
+  background:#b5fbbd;
+}	
+span.pierwsza{
+	font-size:121% !important;
+}
+
+.skresl {text-decoration: line-through !important;}
+
+.ui-header .ui-title,.ui-header .ui-footer {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+
+.ui-grid-a>.ui-block-a{
+/*margin: 0px 0px -10px 0px;*/
+}
+.ui-grid-a>.ui-block-b{
+/*margin: 0px 0px 0px 0px;*/
+text-align:right;
+}

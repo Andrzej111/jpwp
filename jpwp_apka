@@ -1,0 +1,28 @@
+GRANT ALL ON DATABASE jpwp_apka TO psniechowski;
+
+DROP TABLE pacjenci;
+CREATE TABLE pacjenci (
+	id serial primary key,
+	imie varchar(30) NOT NULL,
+	nazwisko varchar(30) NOT NULL,
+	plec char NOT NULL,
+	tel varchar(15),
+	email varchar(30)
+);
+
+INSERT INTO pacjenci (imie,nazwisko,plec,tel,email) 
+	VALUES ('Paweł','Szulc','m','+48697688972','pawel_szulc@onet.pl');
+
+CREATE TABLE badania (
+	id serial primary key,
+	nazwa varchar(50),
+	d_alert real,
+	g_alert real,
+	d_kryt real,
+	g_kryt real,
+	jednostka varchar(15),
+	plec varchar(2) -- 'm','k' lub 'mk'
+);
+
+INSERT INTO badania (nazwa,d_alert,g_alert,d_kryt,g_kryt,jednostka,plec)
+	VALUES ('Poziom glukozy we krwi',70,100,0,126,'mg/dl','mk');
