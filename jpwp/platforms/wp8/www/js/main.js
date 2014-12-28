@@ -44,18 +44,17 @@ $(document).ready(function(){
 	$(document).on("pagebeforeshow", "#lista-pacjentow", function () {
 		$('#lista-pacjentow ul').children().hide();
     	$('#lista-pacjentow ul').children().remove();
-    	$('#lista-pacjentow ul').append('<p style="text-align:center;">Wczytuję listę pacjentów...</p>');
-    	$.getJSON('http://pluton.kt.agh.edu.pl/~pszulc/jpwp/get_pacjenci.php',
+    	$.getJSON(	'http://pluton.kt.agh.edu.pl/~pszulc/jpwp/get_pacjenci.php',
     		function(data){
-    			$('#lista-pacjentow ul').children().remove();
     			if (data.err){
     				alert(data.err);
     			} else {
+    			    alert(JSON.stringify(data));
     				$.each(data,function(index,value){
     					var filter=value.nazwisko+" "+value.imie+" "+value.pesel;
     					var li=$('<li data-filtertext="'+filter+'"></li>');
     					//$(li).attr('id',value.id);
-    					$(li).append($('<a>'+value.nazwisko+' '+value.imie+'</a>').attr('id',value.id));
+    					$(li).append($('<a>'+value.nazwisko+' '+value.imie+'<br>'+value.pesel+'</a>').attr('id',value.id));
     					$('#lista-pacjentow ul').append(li);
     				});
     				$('#lista-pacjentow ul').show();//listview('refresh')

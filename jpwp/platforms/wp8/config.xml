@@ -1,17 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.example.hello" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="Sms">
+        <param name="wp-package" value="Sms" />
+    </feature>
+    <feature name="EmailComposer">
+        <param name="wp-package" value="EmailComposer" />
+    </feature>
     <name>JPWP</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
-    </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+       Aplikacja mobilna dla lekarzy
+   </description>
+    <author email="pawel_szulc@onet.pl" href="http://pluton.kt.agh.edu.pl/~pszulc/jpwp/">
+        Paweł Szulc
     </author>
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.5.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
@@ -67,7 +73,4 @@
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
-    <feature name="Sms">
-        <param name="wp-package" value="Sms" />
-    </feature>
 </widget>

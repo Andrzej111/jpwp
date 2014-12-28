@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"Sms\"><param name=\"wp-package\" value=\"Sms\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"EmailComposer\"><param name=\"wp-package\" value=\"EmailComposer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -19,6 +23,9 @@
     },
     "installed_plugins": {
         "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "{ae501a10-8958-11e4-bec1-8df180fc3b3e}"
+        },
+        "de.appplant.cordova.plugin.email-composer": {
             "PACKAGE_NAME": "{ae501a10-8958-11e4-bec1-8df180fc3b3e}"
         }
     },

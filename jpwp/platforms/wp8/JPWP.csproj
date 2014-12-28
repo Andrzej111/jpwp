@@ -220,4 +220,10 @@
     <ItemGroup>
         <Compile Include="Plugins\com.jsmobile.plugins.sms\Sms.cs" />
     </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\de.appplant.cordova.plugin.email-composer\EmailComposer.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\de.appplant.cordova.plugin.email-composer\Options.cs" />
+    </ItemGroup>
 </Project>

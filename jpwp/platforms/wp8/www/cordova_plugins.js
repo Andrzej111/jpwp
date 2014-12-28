@@ -6,12 +6,20 @@ module.exports = [
         "clobbers": [
             "window.sms"
         ]
+    },
+    {
+        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "clobbers": [
+            "plugin.email"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "com.jsmobile.plugins.sms": "0.0.1"
+    "com.jsmobile.plugins.sms": "0.0.1",
+    "de.appplant.cordova.plugin.email-composer": "0.8.1"
 }
 // BOTTOM OF METADATA
 });

@@ -1,20 +1,31 @@
 GRANT ALL ON DATABASE jpwp_apka TO psniechowski;
+DROP TABLE wyniki;
 
 DROP TABLE pacjenci;
 CREATE TABLE pacjenci (
-	id serial primary key,
+	pacjent_id serial primary key,
 	imie varchar(30) NOT NULL,
 	nazwisko varchar(30) NOT NULL,
+	pesel char(11) NOT NULL,
 	plec char NOT NULL,
 	tel varchar(15),
 	email varchar(30)
 );
 
-INSERT INTO pacjenci (imie,nazwisko,plec,tel,email) 
-	VALUES ('Paweł','Szulc','m','+48697688972','pawel_szulc@onet.pl');
+INSERT INTO pacjenci (imie,nazwisko,pesel,plec,tel,email) 
+	VALUES ('Paweł','Szulc','93051712345','m','+48697688972','pawel_szulc@onet.pl');
+INSERT INTO pacjenci (imie,nazwisko,pesel,plec,tel,email) 
+	VALUES ('Amadeusz','Masny','95031854321','m','+48605678341','amadeuszmasny@gmail.com');
+INSERT INTO pacjenci (imie,nazwisko,pesel,plec,tel,email) 
+	VALUES ('Andrzelika','Masny','94112095666','k','+48604241586','andrzelika@gmail.com');
+INSERT INTO pacjenci (imie,nazwisko,pesel,plec,tel,email) 
+	VALUES ('Mateusz','Baryła','93052444322','m','+48601132428','baryla.mateusz@gmail.com');
+INSERT INTO pacjenci (imie,nazwisko,pesel,plec,tel,email) 
+	VALUES ('Krzysztof','Ibisz','75032148900','m','+48602244086','krzysztof@ibisz.pl');
 
+DROP TABLE badania;
 CREATE TABLE badania (
-	id serial primary key,
+	badanie_id serial primary key,
 	nazwa varchar(50),
 	d_alert real,
 	g_alert real,
@@ -26,3 +37,21 @@ CREATE TABLE badania (
 
 INSERT INTO badania (nazwa,d_alert,g_alert,d_kryt,g_kryt,jednostka,plec)
 	VALUES ('Poziom glukozy we krwi',70,100,0,126,'mg/dl','mk');
+INSERT INTO badania (nazwa,d_alert,g_alert,d_kryt,g_kryt,jednostka,plec)
+	VALUES ('Ciśnienie skurczowe',90,130,0,140,'mm Hg','mk');
+INSERT INTO badania (nazwa,d_alert,g_alert,d_kryt,g_kryt,jednostka,plec)
+	VALUES ('Ciśnienie rozkurczowe',60,85,0,90,'mm Hg','mk');
+
+DROP TABLE wyniki;
+CREATE TABLE wyniki (
+	id serial primary key,
+	badanie_id 	int4,
+	pacjent_id int4,
+	wartosc real,
+	data date default current_date,
+	FOREIGN KEY (badanie_id) REFERENCES badania(badanie_id),
+	FOREIGN KEY (pacjent_id) REFERENCES pacjenci(pacjent_id)
+);
+
+INSERT INTO wyniki (badanie_id,pacjent_id,wartosc) 
+	VALUES (1,3,95);
