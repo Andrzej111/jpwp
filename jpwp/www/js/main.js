@@ -42,6 +42,7 @@ $(document).ready(function(){
     sort_ul("#lista-pacjentow ul");
 
 	$(document).on("pagebeforeshow", "#lista-pacjentow", function () {
+        $('#lista-pacjentow #filtr-listy').val('');
 		$('#lista-pacjentow ul').children().hide();
     	$('#lista-pacjentow ul').children().remove();
     	$('#lista-pacjentow ul').append('<p style="text-align:center;">Wczytuję listę pacjentów...</p>');
