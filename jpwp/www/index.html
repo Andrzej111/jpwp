@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JPWP</title>
+    <head>
+        <title>JPWP</title>
 
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <script src="js/jquery-1.11.1.js"></script> 
+        <script src="js/jquery-1.11.1.js"></script> 
 
-    <!-- standardowy arkusz JQuery Mobile-->
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.4.css" />
+        <!-- standardowy arkusz JQuery Mobile-->
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.4.css" />
 
-    <!-- Tutaj zmieniamy styl -->
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/jquery.mobile-1.4.4.js"></script>
 
-    <script src="js/main.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/jquery.mobile-1.4.4.js"></script>
+        <!--script src="https://maps.googleapis.com/maps/api/js?v=3.17"></script-->
 
-    <!--script src="https://maps.googleapis.com/maps/api/js?v=3.17"></script-->
+        <!-- Tutaj zmieniamy styl -->
 
-    <!-- Tutaj klepiemy kody -->
-    <script src="js/funkcje.js"></script>
-    <!--script src="js/miejsca.js"></script>
-    <script src="js/bazy_danych.js"></script-->
-    <!--script src="js/mapa.js"></script>
-    <script src="js/kompas.js"></script-->
-       <script>
-        app.initialize();
-        document.addEventListener("deviceready", onDeviceReady, false);
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" href="css/alert_theme.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+        <!-- Tutaj klepiemy kody -->
 
-        function onDeviceReady() {
-            console.log("Device Ready");            
+        <script src="js/funkcje.js"></script>
+        <script src="js/main.js"></script>
 
-        };
-    </script>
+           <script>
+            app.initialize();
+            document.addEventListener("deviceready", onDeviceReady, false);
 
-        
-  </head>
+            function onDeviceReady() {
+                console.log("Device Ready");            
+
+            };
+        </script>
+    
+    </head>
 <body>
 <!-- MENU GŁÓWNE -->
     <div data-role="page" data-theme="b" id="menu">
@@ -52,24 +51,27 @@
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="#lista-wynikow" class="ui-btn">Przegląd ostatnich wyników</a>
+            <a href="#lista-krytyczna" class="ui-btn">Lista wyników krytycznych</a>
             <a href="#lista-pacjentow" class="ui-btn">Lista pacjentów</a>
-            <a href="#wpisz-wynik" class="ui-btn">Wpisz wynik z laboratorium</a>
+            <a href="#nowy-pacjent" class="ui-btn">Wpisz nowego pacjenta</a>
+            <!-- <a href="#wpisz-wynik" class="ui-btn">Wpisz wynik z laboratorium</a> -->
         </div>
 
     </div>
 <!-- /MENU GŁÓWNE -->
 
 
-    <div data-role="page" data-theme="b" id="lista-wynikow">
+    <div data-role="page" data-theme="b" id="lista-krytyczna">
 
-            <div data-role="header">
-                <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
-                <h1><span class="pierwsza">L</span>ista <span class="pierwsza">W</span>yników</h1>
-            </div>
+        <div data-role="header">
+            <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+            <h1><span class="pierwsza">L</span>ista <span class="pierwsza">K</span>rytyczna</h1>
+        </div>
 
         <div data-role="main" class="ui-content">
+            <ul data-role="listview" data-inset="true" id="ul-krytyczna">
 
+            </ul>
 
         </div>
     </div>
@@ -78,10 +80,10 @@
 
     <div data-role="page" data-theme="b" id="lista-pacjentow">
 
-            <div data-role="header">
-                <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
-                <h1><span class="pierwsza">L</span>ista <span class="pierwsza">P</span>acjentów</h1>
-            </div>
+        <div data-role="header">
+            <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+            <h1><span class="pierwsza">L</span>ista <span class="pierwsza">P</span>acjentów</h1>
+        </div>
 
         <div data-role="main" class="ui-content">
             <!--a id="schowaj" class="ui-btn">Ukryj</a-->
@@ -99,6 +101,8 @@
 <!-- /LISTA PACJENTÓW -->
 
 <!-- DANE PACJENTA -->
+
+    <!-- TAB 1 -->
     <div data-role="page" data-theme="b" id="dane">
         <div data-role="header">
             <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
@@ -114,15 +118,12 @@
         </div>
 
         <div data-role="main" class="ui-content">
-            <p>Imię i nazwisko</p>
-            <p>Numer telefonu</p>
-            <p>Adres E-mail</p>
-            <a href="tel:+48601851212" class="ui-btn ui-icon-phone ui-btn-icon-left">Zadzwoń</a>
-            <a numer="+48601851212" class="wyslij-sms ui-btn ui-icon-comment ui-btn-icon-left">Wyślij SMS</a>
-            <a class="ui-btn wyslij-email ui-icon-mail ui-btn-icon-left">Wyślij E-mail</a>
+            <!-- dynamicznie wczytujemy z serwera -->
         </div>
 
     </div>
+
+    <!-- TAB 2 -->
 
     <div data-role="page" data-theme="b" id="historia-badan">
         <div data-role="header">
@@ -139,9 +140,14 @@
 
         <div data-role="main" class="ui-content">
 
-            <ul id="lista-badan-pacjenta">
-                <li>Jakieś badanie</li>
-            </ul>
+            <a href="#wpisz-wynik" class="ui-btn" id="dodaj-wynik-button">Dodaj wynik badania</a>
+
+            <div data-role="collapsibleset" id="lista-badan-pacjenta">
+                <div data-role="collapsible" data-collapsed-icon="check" data-expanded-icon="check"><h1>Jakieś badanie</h1></div>
+                <div data-role="collapsible" data-theme="d" data-collapsed-icon="info" data-expanded-icon="info"><h1 >Jakieś inne badanie</h1></div>
+                <div data-role="collapsible" data-theme="c" data-collapsed-icon="alert" data-expanded-icon="alert"><h1 >Jakieś inne badanie</h1></div>
+
+            </div>
         </div>
     </div>
 
@@ -150,53 +156,66 @@
 <!-- WYNIK Z LABORATORIUM -->
 
 <div data-role="page" data-theme="b" id="wpisz-wynik">
-        <div data-role="header">
-            <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
-            <h1><span class="pierwsza">N</span>owy <span class="pierwsza">W</span>ynik</h1>
-        </div>
-
-        <div data-role="main" class="ui-content">
-            <a href="#lista-pacjentow-popup" class="ui-btn" data-rel="popup">Wybierz pacjenta</a>
-        </div>
-
-        <div data-role="popup" class="ui-content" data-ajax="false" id="lista-pacjentow-popup" style="min-width:350px;">
-
-            <form class="ui-filterable">
-                <input id="filtr-listy-popup" data-type="search">
-            </form>
-                <ul data-role="listview" data-autodividers="true" data-filter="true" data-input="#filtr-listy-popup">
-                    <li><a href="#dane">Masny Amadeusz</a></li>
-                    <li><a href="#dane">Śliwiński Miłosz</a></li>
-                    <li><a href="#dane">Garbacz Piotr</a></li>
-                    <li><a href="#dane">Baryła Mateusz</a></li>
-                    <li><a href="#dane">Kubik Mateusz</a></li>
-                    <li><a href="#dane">Kubasiak Kamil</a></li>
-                                        <li><a href="#dane">Masny Amadeusz</a></li>
-                    <li><a href="#dane">Śliwiński Miłosz</a></li>
-                    <li><a href="#dane">Garbacz Piotr</a></li>
-                    <li><a href="#dane">Baryła Mateusz</a></li>
-                    <li><a href="#dane">Kubik Mateusz</a></li>
-                    <li><a href="#dane">Kubasiak Kamil</a></li>
-                                        <li><a href="#dane">Masny Amadeusz</a></li>
-                    <li><a href="#dane">Śliwiński Miłosz</a></li>
-                    <li><a href="#dane">Garbacz Piotr</a></li>
-                    <li><a href="#dane">Baryła Mateusz</a></li>
-                    <li><a href="#dane">Kubik Mateusz</a></li>
-                    <li><a href="#dane">Kubasiak Kamil</a></li>
-                                        <li><a href="#dane">Masny Amadeusz</a></li>
-                    <li><a href="#dane">Śliwiński Miłosz</a></li>
-                    <li><a href="#dane">Garbacz Piotr</a></li>
-                    <li><a href="#dane">Baryła Mateusz</a></li>
-                    <li><a href="#dane">Kubik Mateusz</a></li>
-                    <li><a href="#dane">Kubasiak Kamil</a></li>
-                    
-                </ul>
-        </div>
-
+    <div data-role="header">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+        <h1><span class="pierwsza">N</span>owy <span class="pierwsza">W</span>ynik</h1>
     </div>
+
+    <div data-role="main" class="ui-content">
+        <form id="wpisz-wynik-form"><!-- method="post" action="http://pluton.kt.agh.edu.pl/~pszulc/jpwp/wpisz_wynik.php"-->
+              <div class="ui-field-contain">
+                <label for="wpisz-wynik-badanie">Wybierz rodzaj badania:</label>
+                <select name="wpisz-wynik-badanie" id="wpisz-wynik-badanie">
+                </select>
+                <label for="wpisz-wynik-wartosc">Wpisz wynik:</label>
+                <input type="number" name="wpisz-wynik-wartosc" id="wpisz-wynik-wartosc"/>
+                <input type="hidden" name="wpisz-wynik-id" id="wpisz-wynik-id"/>
+                <input type="submit" name="wpisz-wynik-submit" id="wpisz-wynik-submit" value="Wyślij wynik"/>
+              </div>
+        </form>
+    </div>
+
+</div>
 
 <!-- /WYNIK Z LABORATORIUM -->
 
+<div data-role="page" data-theme="b" id="nowy-pacjent">
+    <div data-role="header">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+        <h1><span class="pierwsza">N</span>owy <span class="pierwsza">P</span>acjent</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <form id="nowy-pacjent-form">
+              <div class="ui-field-contain">
+                <label for="nowy-pacjent-imie">Imię:</label>
+                <input type="text" name="nowy-pacjent-imie" id="nowy-pacjent-imie"/>
+
+                <label for="nowy-pacjent-nazwisko">Nazwisko:</label>
+                <input type="text" name="nowy-pacjent-nazwisko" id="nowy-pacjent-nazwisko"/>
+
+                <label for="nowy-pacjent-pesel">Nr PESEL:</label>
+                <input type="number" name="nowy-pacjent-pesel" id="nowy-pacjent-pesel"/>     
+
+                <label for="nowy-pacjent-tel">Nr telefonu:</label>
+                <input type="number" name="nowy-pacjent-tel" id="nowy-pacjent-tel"/>
+
+                <label for="nowy-pacjent-email">Adres E-Mail:</label>
+                <input type="text" name="nowy-pacjent-email" id="nowy-pacjent-email"/>    
+
+                <label for="nowy-pacjent-plec">Płeć:</label>
+                <select name="nowy-pacjent-plec" id="nowy-pacjent-plec">
+                    <option value="k">Kobieta</option>
+                    <option value="m">Mężczyzna</option>
+                </select>     
+                <p></p> 
+
+                <input type="submit" name="nowy-pacjent-submit" id="nowy-pacjent-submit" value="Wpisz pacjenta"/>
+              </div>
+        </form>
+    </div>
+
+</div>
 
 </body>
 </html>
