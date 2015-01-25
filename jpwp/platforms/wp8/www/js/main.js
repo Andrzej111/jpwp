@@ -172,4 +172,19 @@ $(document).ready(function(){
         );
     });
 
+    $('#dane').bind('swipeleft',function(){
+        $.mobile.changePage('#historia-badan','slide');
+    });
+    $('#dane').bind('swiperight',function(){
+        $.mobile.changePage('#historia-badan','slide');
+    });
+
+    $('#historia-badan').bind('swipeleft',function(){
+        $.mobile.changePage('#dane','slide');
+    });
+
+    $('#historia-badan').bind('swiperight',function(){
+        $.mobile.changePage('#dane','slide');
+    });
+
 });
