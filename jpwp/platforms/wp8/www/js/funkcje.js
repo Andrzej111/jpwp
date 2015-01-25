@@ -94,44 +94,66 @@ function gridsolo_maker(left){
 
 function podepnij_guziki(){
         $('a.wyslij-email').click(function () {
+            var tresc="";
             var adres_email=$(this).attr('mail');
-            if (window.plugin) {
-                window.plugin.email.isServiceAvailable(function (isAvailable) {
-                    if (isAvailable) {
-                        window.plugin.email.open({
-                            to: [adres_email],
-                            subject: 'Email testowy',
-                            body: 'To jest email testowy',
-                        });
-                    }
+            $.getJSON('http://pluton.kt.agh.edu.pl/~pszulc/jpwp/get_ustawienia.php',
+                function(response) {
+                    if (response.err) {alert(response.err); } 
                     else {
-                        alert("Funkcja niedostępna");
+                        tresc=response[1].tresc;
+                        
+                        if (window.plugin) {
+                            window.plugin.email.isServiceAvailable(function (isAvailable) {
+                                if (isAvailable) {
+                                    window.plugin.email.open({
+                                        to: [adres_email],
+                                        subject: 'Wizyta',
+                                        body: tresc,
+                                    });
+                                }
+                                else {
+                                    alert("Funkcja niedostępna");
+                                }
+                            });
+                        }
                     }
-                });
-            }
+                }
+            );
+
         });
     // guziki z klasą wyslij-sms będą wysyłały smsa (wow2!) na numer zadany w atrybucie numer (zaskoczenie!)
     $('a.wyslij-sms').click(function () {
-        var numer = $(this).attr('numer');
+            var tresc="";
+            var numer = $(this).attr('numer');
+            $.getJSON('http://pluton.kt.agh.edu.pl/~pszulc/jpwp/get_ustawienia.php',
+                function(response) {
+                    if (response.err) { alert(response.err); } 
+                    else{ 
+                        tresc=response[0].tresc;
+                        var messageInfo = {
+                            phoneNumber: numer,
+                            textMessage: tresc
+                        };
 
-        var messageInfo = {
-            phoneNumber: numer,
-            textMessage: "Wpisz tekst wiadomości"
-        };
+                        sms.sendMessage(messageInfo, function (message) {
+                            console.log("Sukces");
+                        }, function (error) {
+                            console.log("Problem z wysłaniem wiadomości");
+                        });
+                    }
+                }
+            );
 
-        sms.sendMessage(messageInfo, function (message) {
-            console.log("success: " + message);
-        }, function (error) {
-            console.log("code: " + error.code + ", message: " + error.message);
-        });
     });
 
 }
 
 function wyswietl_dane(id){
+                //alert ('request');
 	            $.getJSON('http://pluton.kt.agh.edu.pl/~pszulc/jpwp/get_pacjent_dane.php',
                 {"id":id},
                 function(response){
+                    //alert ('response');
                     var data=response.dane;
 
                     var grid=gridsolo_maker(["Imię: "+data.imie,"Nazwisko: "+data.nazwisko,"PESEL: "+data.pesel,"Nr telefonu: "+data.tel,"Adres E-mail: "+data.email]);
@@ -190,5 +212,41 @@ function wyswietl_dane(id){
                 }
 
             );
+
+}
+
+function wczytaj_liste(){
+        $.getJSON('http://pluton.kt.agh.edu.pl/~pszulc/jpwp/lista_krytyczna.php',
+            function(data){
+                $("#ul-krytyczna").html('');
+                $.each(data,function(index,value){
+                    var collapsible={};
+                    collapsible=$('<li data-theme="c"><a href="#historia-badan" data-icon="alert" dataiconpos="left">'+value.nazwisko+" "+value.data+'</a></li>');
+                    $(collapsible).attr('pacjent-id',value.id);
+                    $(collapsible).click(function(){
+                        var id=$(this).attr('pacjent-id');
+                        wyswietl_dane(id);
+                    });
+                    $('#ul-krytyczna').append($(collapsible));
+
+                });
+                $("#ul-krytyczna").listview('refresh');
+            }
+
+        );
+
+
+}
+
+function potwierdz_text() {
+    $.post("http://pluton.kt.agh.edu.pl/~pszulc/jpwp/zapisz_ustawienia.php",
+        {   
+            'sms':$('#sms-text').val(),
+            'email':$('#email-text').val()
+        },
+        function(response) {
+            (response.err) ? alert(response.err) : alert(response.sukces);
+        }
+    );
 
 }

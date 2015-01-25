@@ -51,9 +51,10 @@
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="#lista-krytyczna" class="ui-btn">Lista wyników krytycznych</a>
+            <a href="#lista-krytyczna" class="ui-btn" onclick="wczytaj_liste()">Lista wyników krytycznych</a>
             <a href="#lista-pacjentow" class="ui-btn">Lista pacjentów</a>
             <a href="#nowy-pacjent" class="ui-btn">Wpisz nowego pacjenta</a>
+            <a href="#ustawienia" class="ui-btn">Ustawienia</a>
             <!-- <a href="#wpisz-wynik" class="ui-btn">Wpisz wynik z laboratorium</a> -->
         </div>
 
@@ -216,6 +217,29 @@
     </div>
 
 </div>
+
+
+<!-- USTAWIENIA -->
+
+<div data-role="page" data-theme="b" id="ustawienia">
+    <div data-role="header">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+        <h1><span class="pierwsza">U</span>stawienia</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+            <label for="sms-text">Szablon SMS:</label>
+            <textarea id="sms-text" name="sms-text">
+            </textarea>
+            <label for="email-text">Szablon E-Mail:</label>
+            <textarea id="email-text" name="email-text">
+            </textarea>
+             <a class="ui-btn" onclick="potwierdz_text()">Zapisz zmiany</a>
+    </div>
+
+</div>
+
+<!-- /USTAWIENIA -->
 
 </body>
 </html>

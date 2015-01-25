@@ -51,9 +51,11 @@
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="#lista-krytyczna" class="ui-btn">Lista wyników krytycznych</a>
+            <a href="#lista-krytyczna" class="ui-btn" onclick="wczytaj_liste()">Lista wyników krytycznych</a>
             <a href="#lista-pacjentow" class="ui-btn">Lista pacjentów</a>
-            <a href="#wpisz-wynik" class="ui-btn">Wpisz wynik z laboratorium</a>
+            <a href="#nowy-pacjent" class="ui-btn">Wpisz nowego pacjenta</a>
+            <a href="#ustawienia" class="ui-btn">Ustawienia</a>
+            <!-- <a href="#wpisz-wynik" class="ui-btn">Wpisz wynik z laboratorium</a> -->
         </div>
 
     </div>
@@ -178,6 +180,66 @@
 
 <!-- /WYNIK Z LABORATORIUM -->
 
+<div data-role="page" data-theme="b" id="nowy-pacjent">
+    <div data-role="header">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+        <h1><span class="pierwsza">N</span>owy <span class="pierwsza">P</span>acjent</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <form id="nowy-pacjent-form">
+              <div class="ui-field-contain">
+                <label for="nowy-pacjent-imie">Imię:</label>
+                <input type="text" name="nowy-pacjent-imie" id="nowy-pacjent-imie"/>
+
+                <label for="nowy-pacjent-nazwisko">Nazwisko:</label>
+                <input type="text" name="nowy-pacjent-nazwisko" id="nowy-pacjent-nazwisko"/>
+
+                <label for="nowy-pacjent-pesel">Nr PESEL:</label>
+                <input type="number" name="nowy-pacjent-pesel" id="nowy-pacjent-pesel"/>     
+
+                <label for="nowy-pacjent-tel">Nr telefonu:</label>
+                <input type="number" name="nowy-pacjent-tel" id="nowy-pacjent-tel"/>
+
+                <label for="nowy-pacjent-email">Adres E-Mail:</label>
+                <input type="text" name="nowy-pacjent-email" id="nowy-pacjent-email"/>    
+
+                <label for="nowy-pacjent-plec">Płeć:</label>
+                <select name="nowy-pacjent-plec" id="nowy-pacjent-plec">
+                    <option value="k">Kobieta</option>
+                    <option value="m">Mężczyzna</option>
+                </select>     
+                <p></p> 
+
+                <input type="submit" name="nowy-pacjent-submit" id="nowy-pacjent-submit" value="Wpisz pacjenta"/>
+              </div>
+        </form>
+    </div>
+
+</div>
+
+
+<!-- USTAWIENIA -->
+
+<div data-role="page" data-theme="b" id="ustawienia">
+    <div data-role="header">
+        <a href="#menu" class="ui-btn ui-icon-home ui-btn-icon-left"><span class="pierwsza">M</span>enu</a>
+        <h1><span class="pierwsza">U</span>stawienia</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+            <label for="sms-text">Szablon SMS:</label>
+            <textarea id="sms-text" name="sms-text">
+            </textarea>
+            <label for="email-text">Szablon E-Mail:</label>
+            <textarea id="email-text" name="email-text">
+            </textarea>
+             <a class="ui-btn" onclick="potwierdz_text()">Zapisz zmiany</a>
+    </div>
+
+</div>
+
+<!-- /USTAWIENIA -->
 
 </body>
 </html>
